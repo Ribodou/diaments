@@ -1,0 +1,6 @@
+# Executable #
+bin/
+
+# Fichiers de compilation #
+tmp/
+
