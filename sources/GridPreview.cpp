@@ -18,7 +18,7 @@ GridPreview::GridPreview(SDL_Renderer *_pRenderer,
         0,
         0
     });
-    this->piece = new Piece(this->pRenderer, "L"); //TODO: remove test
+    this->piece = new Piece(this->pRenderer, "T"); //TODO: remove test
 }
 
 
@@ -94,14 +94,21 @@ void GridPreview::projeter_ombre(GridGame &grid_game) {
 
 
 bool GridPreview::projeter_piece(GridGame &grid_game) {
-    int offset = this->coordonnees_piece.x;
-    bool success = true;
-    for (int ligne = this->piece->getHauteur() - 1; ligne >= 0; ligne--) {
-        std::vector<Diamond*> envoi = this->piece->getLigne(ligne);
-        success = grid_game.recevoir_ligne_piece(offset, envoi);
-        if (success == false) {
-            return false;
+    if (this->piece != NULL) {
+        int offset = this->coordonnees_piece.x;
+        bool success = true;
+        for (int ligne = this->piece->getHauteur() - 1; ligne >= 0; ligne--) {
+            std::vector<Diamond*> envoi = this->piece->getLigne(ligne);
+            success = grid_game.recevoir_ligne_piece(offset, envoi);
+            if (success == false) {
+                return false;
+            }
         }
+        // let's create a new piece
+        delete this->piece;
+        this->piece = Piece::createAleatPiece(this->pRenderer);
+        return true;
+    } else {  // no piece is found
+        return false;
     }
-    return true;
 }
