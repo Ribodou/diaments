@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <string>
 #include <SDL2/SDL.h>
 #include <iostream>
 
@@ -11,6 +12,7 @@
 
 class Piece {
 	protected:
+		std::vector<std::string> shapes;
 		SDL_Renderer *pRenderer;
 		std::string forme;
 		int largeur;
@@ -18,6 +20,7 @@ class Piece {
 		std::vector<std::vector<Diamond*> > tab;
 	public:
 		Piece(SDL_Renderer *_pRenderer, std::string _forme);
+		static Piece * createAleatPiece(SDL_Renderer *_pRenderer);
 		~Piece();
 		int getHauteur();
 		int getLargeur();

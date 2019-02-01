@@ -16,14 +16,59 @@ Piece::Piece(SDL_Renderer *_pRenderer,
             }
             this->tab.push_back(temp);
         }
-        this->tab[0][0] = new Diamond(this->pRenderer, 1);
-        this->tab[1][0] = new Diamond(this->pRenderer, 2);
-        this->tab[2][0] = new Diamond(this->pRenderer, 1);
-        this->tab[3][0] = new Diamond(this->pRenderer, 2);
-        this->tab[3][1] = new Diamond(this->pRenderer, 2);
+        this->tab[0][0] = new Diamond(this->pRenderer);
+        this->tab[1][0] = new Diamond(this->pRenderer);
+        this->tab[2][0] = new Diamond(this->pRenderer);
+        this->tab[3][0] = new Diamond(this->pRenderer);
+        this->tab[3][1] = new Diamond(this->pRenderer);
+    } else if (this->forme.compare("T") == 0) {
+        this->hauteur = 4;
+        this->largeur = 3;
+        for (int i = 0; i < this->hauteur; i++) {
+            std::vector<Diamond*> temp;
+            for (int j = 0; j < this->largeur; j++) {
+                temp.push_back(NULL);
+            }
+            this->tab.push_back(temp);
+        }
+        this->tab[0][0] = new Diamond(this->pRenderer);
+        this->tab[0][1] = new Diamond(this->pRenderer);
+        this->tab[0][2] = new Diamond(this->pRenderer);
+        this->tab[1][1] = new Diamond(this->pRenderer);
+        this->tab[2][1] = new Diamond(this->pRenderer);
+    } else if (this->forme.compare("Z") == 0) {
+        this->hauteur = 2;
+        this->largeur = 3;
+        for (int i = 0; i < this->hauteur; i++) {
+            std::vector<Diamond*> temp;
+            for (int j = 0; j < this->largeur; j++) {
+                temp.push_back(NULL);
+            }
+            this->tab.push_back(temp);
+        }
+        this->tab[0][0] = new Diamond(this->pRenderer);
+        this->tab[0][1] = new Diamond(this->pRenderer);
+        this->tab[1][1] = new Diamond(this->pRenderer);
+        this->tab[1][2] = new Diamond(this->pRenderer);
     } else {
         exit(2);
     }
+}
+
+
+
+Piece * Piece::createAleatPiece(SDL_Renderer *_pRenderer) {
+    std::vector<std::string> shapes = {"L", "T", "Z"};
+    const unsigned long n = std::distance(shapes.begin(), shapes.end());
+    const unsigned long divisor = RAND_MAX / n;
+
+    unsigned int k;
+    do {
+        k = std::rand() / divisor;
+    } while (k >= n);
+
+    std::string choice = shapes[k];
+    return new Piece(_pRenderer, choice);
 }
 
 
@@ -82,18 +127,6 @@ void Piece::retourner() {
         }
         this->tab.push_back(ligne);
     }
-/*
-    for(int j=0; j < largeur_ancienne; j++) {
-        for(int i=0; i < hauteur_ancienne; i++) {
-            if (this->tab[j][i] != NULL) {
-                std::cout << "NOTNULL "; 
-            } else {
-                std::cout << "NULL    ";
-            }
-        }
-        std::cout << std::endl;
-    }
-*/
 }
 
 
