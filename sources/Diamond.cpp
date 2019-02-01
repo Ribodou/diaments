@@ -3,14 +3,12 @@
 
 #include "usefull_functions.hpp"
 
-
-
 Diamond::Diamond(SDL_Renderer *_pRenderer) {
     this->pRenderer = _pRenderer;
 
     this->ombre = false;
 
-    // this can be done in a loop, but I prefer to do it manually
+    // this can be done in a loop, but I prefer to do it manually => :-(
     /* sprite 1 = bleu */
     SDL_Surface* spriteBleu = SDL_LoadBMP("./ressources/sprites/bleu2.bmp");
     verify<SDL_Surface>(spriteBleu);

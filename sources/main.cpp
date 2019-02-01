@@ -9,7 +9,6 @@
 #include "Piece.hpp"
 #include "Score.hpp"
 #include "usefull_functions.hpp"
-using namespace std;
 
 /*
 On a deux grilles: GrigGame et GridPreview (toutes deux heritant de Grid)
@@ -26,7 +25,7 @@ Chaque Diamant tombe dans la grille indépandamment les uns les autres
 // TODO: gérer le fait de faire tomber les pieces par petit bout
 void initSDL(int largeur_fenetre, int hauteur_fenetre, SDL_Window *&pWindow, SDL_Renderer *&pRenderer) {
     if (SDL_Init(SDL_INIT_VIDEO) != 0) {
-        cout << SDL_GetError() << endl;
+        std::cout << SDL_GetError() << std::endl;
         exit(EXIT_FAILURE);
     }
 
