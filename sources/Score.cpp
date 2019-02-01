@@ -59,7 +59,7 @@ void Score::dessiner(int taille_pixel_bords) {
 
 
     SDL_Rect rect_text = {this->point_haut_gauche.x - 5,
-                          this->point_haut_gauche.y - 5,
+                          this->point_haut_gauche.y - 10,
                           text_width,
                           text_height};
     
