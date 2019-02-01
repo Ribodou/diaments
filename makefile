@@ -1,5 +1,5 @@
 CPP=g++    # Commande du compilateur
-CFLAGS=-Wall -Wextra -g # Option d'optimisation du programme -O3
+CFLAGS=-Wall -Wextra -g -std=c++17# Option d'optimisation du programme -O3
 LDFLAGS=-lSDL2 -lcwiid -lbluetooth -lSDL2_ttf# -lSDL2_mixer # Linker
 
 EXEC=bin/main  # Nom du programme
