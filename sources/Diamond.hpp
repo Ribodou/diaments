@@ -23,6 +23,7 @@ class Diamond {
 		static Initialiser m_initialiser;
 */
 	public:
+		Diamond(SDL_Renderer *_pRenderer);
 		Diamond(SDL_Renderer *_pRenderer, int _color);
 		~Diamond();
 

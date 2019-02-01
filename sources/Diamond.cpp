@@ -5,7 +5,7 @@
 
 
 
-Diamond::Diamond(SDL_Renderer *_pRenderer, int _color) {
+Diamond::Diamond(SDL_Renderer *_pRenderer) {
     this->pRenderer = _pRenderer;
 
     this->ombre = false;
@@ -29,7 +29,48 @@ Diamond::Diamond(SDL_Renderer *_pRenderer, int _color) {
     this->sprites.push_back(spriteRouge);
     this->textures.push_back(textureRouge);
 
-    this->color = _color;
+    /* sprite 3 = jaune */
+    SDL_Surface* spriteJaune = SDL_LoadBMP("./ressources/sprites/jaune.bmp");
+    verify<SDL_Surface>(spriteJaune);
+    SDL_Texture* textureJaune;
+    textureJaune = SDL_CreateTextureFromSurface(Diamond::pRenderer, spriteJaune);
+    verify<SDL_Texture>(textureJaune);
+    this->sprites.push_back(spriteJaune);
+    this->textures.push_back(textureJaune);
+
+    /* sprite 4 = orange */
+    SDL_Surface* spriteOrange = SDL_LoadBMP("./ressources/sprites/orange.bmp");
+    verify<SDL_Surface>(spriteOrange);
+    SDL_Texture* textureOrange;
+    textureOrange = SDL_CreateTextureFromSurface(Diamond::pRenderer, spriteOrange);
+    verify<SDL_Texture>(textureOrange);
+    this->sprites.push_back(spriteOrange);
+    this->textures.push_back(textureOrange);
+
+    /* sprite 4 = vert */
+    SDL_Surface* spriteVert = SDL_LoadBMP("./ressources/sprites/vert.bmp");
+    verify<SDL_Surface>(spriteVert);
+    SDL_Texture* textureVert;
+    textureVert = SDL_CreateTextureFromSurface(Diamond::pRenderer, spriteVert);
+    verify<SDL_Texture>(textureVert);
+    this->sprites.push_back(spriteVert);
+    this->textures.push_back(textureVert);
+
+
+    const unsigned long n = std::distance(this->sprites.begin(), this->sprites.end());
+    const unsigned long divisor = RAND_MAX / n;
+
+    unsigned int k;
+    do {
+        k = std::rand() / divisor;
+    } while (k >= n);
+
+    this->color = k + 1;
+}
+
+
+Diamond::Diamond(SDL_Renderer *_pRenderer, int color) : Diamond(_pRenderer) {
+    this->color = color;
 }
 
 
