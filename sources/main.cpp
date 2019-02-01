@@ -3,29 +3,25 @@
 #include <stdio.h>
 #include <SDL2/SDL.h>
 #include<SDL2/SDL_ttf.h>
-//#include <cwiid.h>  // apt-get install libcwiid-dev
+//#include <cwiid.h>  // apt-get install libcwiid-dev  //Copyright (C) 2007 L. Donnie Smith <cwiid@abstrakraft.org>
 #include "GridGame.hpp"
 #include "GridPreview.hpp"
 #include "Piece.hpp"
 #include "Score.hpp"
 #include "usefull_functions.hpp"
-//lcd: auto detect port, rev en param, defiler, ne pas depasser, plusieur lignes
 using namespace std;
-//Copyright (C) 2007 L. Donnie Smith <cwiid@abstrakraft.org>
 
 /*
-On a deux grille: GrigGame et GridPreview (toutes deux heritant de Grid)
+On a deux grilles: GrigGame et GridPreview (toutes deux heritant de Grid)
 GridGame est la grille dans laquelle se mettent les diamants tombés
-GridPreview est la grille dans laquelle la pièce est placées avant de pouvoir la jouée
+GridPreview est la grille dans laquelle la pièce est placée avant de pouvoir la jouer
 
 On place une piece, composée de plusieurs Diamants, dans GridPreview.
 Pour l'envoyer dans GridGame, on transforme le pièce en plein de Diamant.
 Chaque Diamant tombe dans la grille indépandamment les uns les autres
 (ie: pas comme Tetris)
-
-Pour faciliter la manipulation, le tout est placé dans 
 */
-// TODO : gérer a rotation (on peut se décaler)
+// TODO : gérer a rotation (on peut se décaler - ne pas tourner autour du centre de gravité de la piece)
 // TODO: gérer la wiimote
 // TODO: gérer le fait de faire tomber les pieces par petit bout
 void initSDL(int largeur_fenetre, int hauteur_fenetre, SDL_Window *&pWindow, SDL_Renderer *&pRenderer) {
