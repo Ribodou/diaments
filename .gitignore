@@ -4,3 +4,5 @@ bin/
 # Fichiers de compilation #
 tmp/
 
+# VSCode's files
+.vscode/
