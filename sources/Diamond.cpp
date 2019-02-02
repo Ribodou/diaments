@@ -6,7 +6,7 @@
 Diamond::Diamond(SDL_Renderer *_pRenderer) {
     this->pRenderer = _pRenderer;
 
-    this->ombre = false;
+    this->shadow = false;
 
     // this can be done in a loop, but I prefer to do it manually => :-(
     /* sprite 1 = bleu */
@@ -74,12 +74,10 @@ Diamond::Diamond(SDL_Renderer *_pRenderer, int color) : Diamond(_pRenderer) {
 
 Diamond::~Diamond() {
     for (uint i = 0; i < this->textures.size(); i++) {
-        //std::cout << "Libération de la mémoire associée à la texture" << std::endl;
         //std::cout << this->textures.size() << std::endl;
         SDL_DestroyTexture(this->textures[i]);
     }
     for (uint i = 0; i < this->sprites.size(); i++) {
-        //std::cout << "Libération de la ressource occupée par le sprite" << std::endl;
         SDL_FreeSurface(this->sprites[i]);
     }
 }
@@ -99,20 +97,19 @@ void Diamond::draw(int x, int y) {
             this->sprites[indice]->w,
             this->sprites[indice]->h,
         };
-        // Copie du sprite grâce au SDL_Renderer
         SDL_RenderCopy(this->pRenderer, this->textures[indice], NULL, &dest);
     }
 }
 
 
-void Diamond::assombrir() {
+void Diamond::darken() {
     for (uint i = 0; i < this->textures.size(); i++) {
         SDL_SetTextureColorMod(this->textures[i], 64, 64, 64);
     }
-    this->ombre = true;
+    this->shadow = true;
 }
 
 
-bool Diamond::estUneOmbre() {
-    return this->ombre;
+bool Diamond::isAShadow() {
+    return this->shadow;
 }

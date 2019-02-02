@@ -12,7 +12,7 @@ class Diamond {
 		std::vector<SDL_Surface*> sprites;
 		std::vector<SDL_Texture*> textures;
 		int color;
-		bool ombre;
+		bool shadow;
 /*
 		class Initialiser {
 			public:
@@ -23,14 +23,21 @@ class Diamond {
 		static Initialiser m_initialiser;
 */
 	public:
+		/* Create a Diamond with a random color */
 		Diamond(SDL_Renderer *_pRenderer);
+		/* Create a Diamond with the color n° _color */
 		Diamond(SDL_Renderer *_pRenderer, int _color);
+		/* Destroy the Diamond and free everything inside it */
 		~Diamond();
 
+		/* Rteurn the color used to create the Diamond */
 		int getColor();
+		/* Draw the Diamond on the pRender inside it */
 		void draw(int x, int y);
-		void assombrir();
-		bool estUneOmbre();
+		/* Darken the Diamond (ie: change its color) */
+		void darken();
+		/* Return true if and only if the Diamond is a shadow */
+		bool isAShadow();
 };
 
 
