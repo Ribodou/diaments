@@ -18,13 +18,14 @@ GridPreview::GridPreview(SDL_Renderer *_pRenderer,
         0,
         0
     });
-    this->piece = new Piece(this->pRenderer, "T"); //TODO: remove test
+    this->piece = Piece::createAleatPiece(this->pRenderer);
 }
 
 
 GridPreview::~GridPreview() {
     if (this->piece != NULL) {
         delete this->piece;
+        this->piece = NULL;
     }
 }
 /*
@@ -105,7 +106,7 @@ bool GridPreview::projeter_piece(GridGame &grid_game) {
             }
         }
         // let's create a new piece
-        delete this->piece;
+        Piece::destroyPiece(this->piece);
         this->piece = Piece::createAleatPiece(this->pRenderer);
         return true;
     } else {  // no piece is found

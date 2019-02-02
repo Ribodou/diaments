@@ -57,7 +57,7 @@ Piece::Piece(SDL_Renderer *_pRenderer,
 
 
 
-Piece * Piece::createAleatPiece(SDL_Renderer *_pRenderer) {
+Piece *Piece::createAleatPiece(SDL_Renderer *_pRenderer) {
     std::vector<std::string> shapes = {"L", "T", "Z"};
     const unsigned long n = std::distance(shapes.begin(), shapes.end());
     const unsigned long divisor = RAND_MAX / n;
@@ -69,6 +69,11 @@ Piece * Piece::createAleatPiece(SDL_Renderer *_pRenderer) {
 
     std::string choice = shapes[k];
     return new Piece(_pRenderer, choice);
+}
+
+
+void Piece::destroyPiece(Piece *&piece) {
+    delete piece;
 }
 
 

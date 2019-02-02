@@ -21,6 +21,7 @@ class Piece {
 	public:
 		Piece(SDL_Renderer *_pRenderer, std::string _forme);
 		static Piece * createAleatPiece(SDL_Renderer *_pRenderer);
+		static void destroyPiece(Piece *&piece);
 		~Piece();
 		int getHauteur();
 		int getLargeur();
