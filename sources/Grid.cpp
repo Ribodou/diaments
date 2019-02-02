@@ -29,6 +29,7 @@ Grid::~Grid() {
         for (int j = 0; j < this->largeur; j++) {
             if (this->tab[i][j] != NULL) {
                 delete this->tab[i][j];
+                this->tab[i][j] = NULL;
             }
         }
     }
