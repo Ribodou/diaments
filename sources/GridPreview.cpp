@@ -28,11 +28,7 @@ GridPreview::~GridPreview() {
         this->piece = NULL;
     }
 }
-/*
-y = this->point_haut_gauche.y + (this->largeur_pixel + taille_pixel_bords) * i;
-        for(int j = 0; j < largeur; j++) {
-            x = this->point_haut_gauche.x + (this->hauteur_pixel + taille_pixel_bords) * j;*
-*/
+
 
 void GridPreview::dessiner(int taille_pixel_bords) {
     Grid::dessiner(taille_pixel_bords);
@@ -77,7 +73,6 @@ void GridPreview::retourner_piece() {
         // si on tourne sur nous-même autour d'un point (mettons celui en haut à gauche)
         // ce point ne prends pas plus de place
         y_max_apres -= 1;
-        //std::cout << this->coordonnees_piece.x << " " << this->piece->getHauteur() << std::endl;
         if (y_max_apres < this->largeur) {
             return this->piece->retourner();
         }

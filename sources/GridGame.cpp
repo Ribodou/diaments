@@ -305,7 +305,7 @@ void GridGame::effacerOmbre() {
     for (int i = 0; i < this->hauteur; i++) {
         for (int j = 0; j < this->largeur; j++) {
             if (this->tab[i][j] != NULL) {
-                if (this->tab[i][j]->estUneOmbre()) {
+                if (this->tab[i][j]->isAShadow()) {
                     delete this->tab[i][j];
                     this->tab[i][j] = NULL;
                 }

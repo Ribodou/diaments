@@ -142,7 +142,7 @@ std::vector<Diamond*> Piece::getLigneOmbre(int ligne) {
         if (this->tab[ligne][i] != NULL) {
             int couleur = this->tab[ligne][i]->getColor();
             d = new Diamond(this->pRenderer, couleur);
-            d->assombrir();
+            d->darken();
         } else {
             d = NULL;
         }
