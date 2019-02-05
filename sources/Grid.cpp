@@ -36,7 +36,7 @@ Grid::~Grid() {
 }
 
 
-void Grid::dessiner(int taille_pixel_bords) {
+void Grid::draw(int taille_pixel_bords) {
     int x, y, color, indice;
     x = y = color = indice = 0;
     int xdeb, xfin, ydeb, yfin;

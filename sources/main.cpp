@@ -52,9 +52,9 @@ void afficher(SDL_Renderer *&pRenderer,
     SDL_Delay(time_to_wait);
     SDL_SetRenderDrawColor(pRenderer, 255, 255, 255, 255);
     SDL_RenderClear(pRenderer);
-    grid_game.dessiner(2);
-    grid_preview.dessiner(2);
-    score.dessiner(2);
+    grid_game.draw(2);
+    grid_preview.draw(2);
+    score.draw(2);
     SDL_RenderPresent(pRenderer);  // Affichage
 }
 

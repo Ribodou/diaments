@@ -21,7 +21,7 @@ class GridPreview : public Grid {
                   int hauteur_pixel,
                   SDL_Point point_haut_gauche);
 		~GridPreview();
-            void dessiner(int taille_pixel_bords);
+            void draw(int taille_pixel_bords);
             bool deplacerPiece(int delatCaseX, int delatCaseY);
             void retourner_piece();
             void projeter_ombre(GridGame &grid_game);

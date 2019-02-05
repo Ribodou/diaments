@@ -98,7 +98,7 @@ int Piece::getLargeur() {
 }
 
 
-void Piece::dessiner(SDL_Point point_haut_gauche_piece,
+void Piece::draw(SDL_Point point_haut_gauche_piece,
                      int largeur_pixel,
                      int hauteur_pixel,
                      int taille_pixel_bords) {

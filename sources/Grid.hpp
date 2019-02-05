@@ -25,7 +25,7 @@ class Grid {
             int height_pixel,
             SDL_Point point_haut_gauche);
 		~Grid();
-		virtual void dessiner(int taille_pixel_bords);
+		virtual void draw(int taille_pixel_bords);
 		
 };
 

@@ -5,13 +5,13 @@
 Score::Score(SDL_Renderer *_pRenderer,
              SDL_Point _point_haut_gauche,
              int _largeur_pixel,
-             int _hauteur_pixel,
+             int _height_pixel,
              int _score)
              :
              pRenderer(_pRenderer),
              point_haut_gauche(_point_haut_gauche),
              largeur_pixel(_largeur_pixel),
-             hauteur_pixel(_hauteur_pixel),
+             height_pixel(_height_pixel),
              score(_score) {
     // do nothing
 }
@@ -20,7 +20,7 @@ Score::~Score() {
     // do nothing
 }
 
-void Score::dessiner(int taille_pixel_bords) {
+void Score::draw(int taille_pixel_bords) {
     TTF_Font* font = TTF_OpenFont("fonts/VeraMono.ttf", 14);
     std::string score_number = std::to_string(this->score);
     SDL_Color scoreColor = { 0, 0, 0, 0 };
@@ -28,7 +28,7 @@ void Score::dessiner(int taille_pixel_bords) {
     int score_width = scoreSurface->w;
     int score_height = scoreSurface->h;
     SDL_Rect rect_score = {this->point_haut_gauche.x + this->largeur_pixel - score_width - 2,
-                           this->point_haut_gauche.y + this->hauteur_pixel - score_height - 2,
+                           this->point_haut_gauche.y + this->height_pixel - score_height - 2,
                            score_width,
                            score_height};
     SDL_Texture* scoreTexture = SDL_CreateTextureFromSurface(this->pRenderer, scoreSurface);
@@ -42,7 +42,7 @@ void Score::dessiner(int taille_pixel_bords) {
         x = this->point_haut_gauche.x - i -1;
         y = this->point_haut_gauche.y - i -1;
         xfin = x - i + this->largeur_pixel + i +1;
-        yfin = y - i + this->hauteur_pixel + i +1;
+        yfin = y - i + this->height_pixel + i +1;
         SDL_RenderDrawLine(pRenderer, x, y, xfin, y);
         SDL_RenderDrawLine(pRenderer, xfin, y, xfin, yfin);
         SDL_RenderDrawLine(pRenderer, xfin, yfin, x, yfin);

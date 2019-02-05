@@ -30,8 +30,8 @@ GridPreview::~GridPreview() {
 }
 
 
-void GridPreview::dessiner(int taille_pixel_bords) {
-    Grid::dessiner(taille_pixel_bords);
+void GridPreview::draw(int taille_pixel_bords) {
+    Grid::draw(taille_pixel_bords);
     int xScreen, yScreen;
     SDL_Point point_haut_gauche_piece;
     xScreen = this->point_haut_gauche.x + (this->width_pixel + taille_pixel_bords) * this->coordonnees_piece.x;
@@ -43,7 +43,7 @@ void GridPreview::dessiner(int taille_pixel_bords) {
     });
 
     if (this->piece != NULL) {
-        this->piece->dessiner(point_haut_gauche_piece,
+        this->piece->draw(point_haut_gauche_piece,
                             this->width_pixel,
                             this->height_pixel,
                             taille_pixel_bords);
