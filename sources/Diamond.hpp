@@ -30,7 +30,7 @@ class Diamond {
 		/* Destroy the Diamond and free everything inside it */
 		~Diamond();
 
-		/* Rteurn the color used to create the Diamond */
+		/* Return the color used to create the Diamond */
 		int getColor();
 		/* Draw the Diamond on the pRender inside it */
 		void draw(int x, int y);
