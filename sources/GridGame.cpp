@@ -3,13 +3,13 @@
 
 
 GridGame::GridGame(SDL_Renderer *_pRenderer,
-               int _largeur,
-               int _hauteur,
-               int _largeur_pixel,
-               int _hauteur_pixel,
+               int _width,
+               int _height,
+               int _width_pixel,
+               int _height_pixel,
                SDL_Point _point_haut_gauche)
                :
-               Grid(_pRenderer, _largeur, _hauteur, _largeur_pixel, _hauteur_pixel, _point_haut_gauche)
+               Grid(_pRenderer, _width, _height, _width_pixel, _height_pixel, _point_haut_gauche)
                {
     /*
     int temp [9][2] = {{1, 0}, {3, 5}, {4, 3}, {1, 4}, {3, 6}, {4, 8}, {1, 9}, {3, 1}, {4, 0}};
@@ -32,7 +32,7 @@ GridGame::~GridGame() {
 
 
 bool GridGame::exists(int x, int y) {  //TODO : test
-    if (x >= 0 && x < this->largeur && y >= 0 && y < this->hauteur) {
+    if (x >= 0 && x < this->width && y >= 0 && y < this->height) {
         if (this->tab[y][x] != NULL) {
             return true;
         }
@@ -45,7 +45,7 @@ bool GridGame::fixed(int x, int y) {  //TODO : test
     while (this->exists(x, y)) {
         y++;
     }
-    if (y == (this->hauteur)) {
+    if (y == (this->height)) {
         return true;
     }
     return false;
@@ -55,8 +55,8 @@ bool GridGame::fixed(int x, int y) {  //TODO : test
 bool GridGame::faire_tomber() {
     // TODO: pourquoi 0
     bool tombe = false;
-    for (int i = this->hauteur - 2; i >= 0; i--) {
-        for (int j=0; j < this->largeur; j++) {
+    for (int i = this->height - 2; i >= 0; i--) {
+        for (int j=0; j < this->width; j++) {
             if ((this->tab[i][j] != 0) && (this->tab[i+1][j] == 0)) {
                 this->tab[i+1][j] = this->tab[i][j];
                 this->tab[i][j] = 0;
@@ -79,11 +79,11 @@ void GridGame::recevoir_ligne_ombre(int offset, std::vector<Diamond*> ligneDiama
     for (uint x = 0; x < ligneDiamant.size(); x++) {
         int ligneLibre = 0;
         bool fond = false;
-        while (ligneLibre < this->hauteur && not(fond)) {
+        while (ligneLibre < this->height && not(fond)) {
             if ((this->tab[ligneLibre][x + offset] != NULL) ){
                 ligneLibre--;
                 fond = true;
-            } else if (ligneLibre == this->hauteur - 1) {
+            } else if (ligneLibre == this->height - 1) {
                 fond = true;
             } else {
                 //std::cout << ligneLibre<< "est pris" << std::endl;
@@ -102,11 +102,11 @@ bool GridGame::recevoir_ligne_piece(int offset, std::vector<Diamond*> ligneDiama
     for (uint x = 0; x < ligneDiamant.size(); x++) {
         int ligneLibre = 0;
         bool fond = false;
-        while (ligneLibre < this->hauteur && not(fond)) {
+        while (ligneLibre < this->height && not(fond)) {
             if ((this->tab[ligneLibre][x + offset] != NULL) ){
                 ligneLibre--;
                 fond = true;
-            } else if (ligneLibre == this->hauteur - 1) {
+            } else if (ligneLibre == this->height - 1) {
                 fond = true;
             } else {
                 ligneLibre++;
@@ -253,7 +253,7 @@ bool GridGame::detruireAlignements(Score &score) {
     std::vector<std::vector<int> > temp_aligneds;
     bool alignementsDetruits = false;
     int nbMinAlignes = 3;
-    // TODO : n'itérer que sur y = nbAlignes - 1; y < this->hauteur - (nbAlignes - 1); y++) (par exemple)
+    // TODO : n'itérer que sur y = nbAlignes - 1; y < this->height - (nbAlignes - 1); y++) (par exemple)
     for (uint i = 0; i < this->not_verified.size(); i++) {
         std::vector<int> couple = this->not_verified[i];
         // horizontal check
@@ -302,8 +302,8 @@ bool GridGame::detruireAlignements(Score &score) {
 
 
 void GridGame::effacerOmbre() {
-    for (int i = 0; i < this->hauteur; i++) {
-        for (int j = 0; j < this->largeur; j++) {
+    for (int i = 0; i < this->height; i++) {
+        for (int j = 0; j < this->width; j++) {
             if (this->tab[i][j] != NULL) {
                 if (this->tab[i][j]->isAShadow()) {
                     delete this->tab[i][j];

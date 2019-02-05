@@ -1,17 +1,17 @@
 #include "GridPreview.hpp"
 
 GridPreview::GridPreview(SDL_Renderer *_pRenderer,
-               int _largeur,
-               int _hauteur,
-               int _largeur_pixel,
-               int _hauteur_pixel,
+               int _width,
+               int _height,
+               int _width_pixel,
+               int _height_pixel,
                SDL_Point _point_haut_gauche)
                :
                Grid(_pRenderer,
-                    _largeur,
-                    _hauteur,
-                    _largeur_pixel,
-                    _hauteur_pixel,
+                    _width,
+                    _height,
+                    _width_pixel,
+                    _height_pixel,
                     _point_haut_gauche)
                {
     this->coordonnees_piece = SDL_Point({
@@ -34,8 +34,8 @@ void GridPreview::dessiner(int taille_pixel_bords) {
     Grid::dessiner(taille_pixel_bords);
     int xScreen, yScreen;
     SDL_Point point_haut_gauche_piece;
-    xScreen = this->point_haut_gauche.x + (this->largeur_pixel + taille_pixel_bords) * this->coordonnees_piece.x;
-    yScreen = this->point_haut_gauche.y + (this->hauteur_pixel + taille_pixel_bords) * this->coordonnees_piece.y;
+    xScreen = this->point_haut_gauche.x + (this->width_pixel + taille_pixel_bords) * this->coordonnees_piece.x;
+    yScreen = this->point_haut_gauche.y + (this->height_pixel + taille_pixel_bords) * this->coordonnees_piece.y;
 
     point_haut_gauche_piece = SDL_Point({
         xScreen,
@@ -44,8 +44,8 @@ void GridPreview::dessiner(int taille_pixel_bords) {
 
     if (this->piece != NULL) {
         this->piece->dessiner(point_haut_gauche_piece,
-                            this->largeur_pixel,
-                            this->hauteur_pixel,
+                            this->width_pixel,
+                            this->height_pixel,
                             taille_pixel_bords);
     }
 }
@@ -55,8 +55,8 @@ bool GridPreview::deplacerPiece(int delatCaseX, int delatCaseY) {
         int x = this->coordonnees_piece.x + delatCaseX;
         int y = this->coordonnees_piece.y + delatCaseY;
         bool testX, testY;
-        testX = ((0 <= x) && (x + this->piece->getLargeur() <= this->largeur));
-        testY = ((0 <= y) && (y + this->piece->getHauteur() <= this->hauteur));
+        testX = ((0 <= x) && (x + this->piece->getLargeur() <= this->width));
+        testY = ((0 <= y) && (y + this->piece->getHauteur() <= this->height));
         if (testX && testY) {
             this->coordonnees_piece.x = x;
             this->coordonnees_piece.y = y;
@@ -73,7 +73,7 @@ void GridPreview::retourner_piece() {
         // si on tourne sur nous-même autour d'un point (mettons celui en haut à gauche)
         // ce point ne prends pas plus de place
         y_max_apres -= 1;
-        if (y_max_apres < this->largeur) {
+        if (y_max_apres < this->width) {
             return this->piece->retourner();
         }
     }

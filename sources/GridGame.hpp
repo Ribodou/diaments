@@ -11,9 +11,9 @@ class GridGame : public Grid {
         std::vector<std::vector<int>> not_verified;
 	public:
 		GridGame(SDL_Renderer *pRenderer,
-                     int largeur,
+                     int width,
                      int hauteur,
-                     int largeur_pixel,
+                     int width_pixel,
                      int hauteur_pixel,
                      SDL_Point point_haut_gauche);
 		~GridGame();
