@@ -10,6 +10,7 @@
 #include "Score.hpp"
 #include "usefull_functions.hpp"
 
+// error : Couldn't open ./ressources/sprites/bleu2.bmp
 /*
 On a deux grilles: GrigGame et GridPreview (toutes deux heritant de Grid)
 GridGame est la grille dans laquelle se mettent les diamants tombés
