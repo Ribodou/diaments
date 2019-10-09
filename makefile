@@ -6,7 +6,7 @@ LDFLAGSPLUS=-lcwiid -lbluetooth -lSDL2_mixer
 EXEC=bin/main # Nom du programme
 OBJECTS = tmp/main.o tmp/Diamond.o tmp/Grid.o tmp/GridGame.o tmp/GridPreview.o tmp/Piece.o tmp/Score.o # Objets nécessaires à la compilation
 
-all: ${EXEC}
+all: bin tmp ${EXEC}
 
 $(EXEC): $(OBJECTS)
 	$(CPP) $(CFLAGS) $(OBJECTS) -o $(EXEC) $(LDFLAGS)
@@ -19,3 +19,8 @@ clean:
 
 mrproper: clean
 	rm -fr ${EXEC}
+
+bin: 
+	mkdir bin
+tmp: 
+	mkdir tmp
